@@ -10,6 +10,8 @@ To compile, simply run the main.py with entire UmaLibrary file present with main
 
 This is still an early development, I'm going to make some scripts to automatically convert the data.json into appropriate json later.
 
+If you want to add new translation, add it into excel files, convert it into json and then run the script.
+
 ## Library
 English Translation : [https://github.com/FabulousCupcake/umamusume-db-translate](https://github.com/FabulousCupcake/umamusume-db-translate)
 
