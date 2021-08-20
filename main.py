@@ -100,6 +100,8 @@ def translate_patch(myjson, key, keyList, keyValueList, isRunLeven = False):
                 translate_patch(item, key, keyList, keyValueList, isRunLeven)
 
 def uma_name_patching(myjson, key, keyValue, isRunLeven = False):
+    if (key == keyValue):
+        return
     if type(myjson) is dict:
         for jsonkey in myjson.copy():
             if key in jsonkey:
