@@ -40,7 +40,8 @@ def try_remove_files(filename):
 def load_library(myjson, arrs, parent, key, keyValue):
     data = json.load(myjson)
     for group in data[parent]:
-        arrs[group[key]] = group[keyValue]
+        if (group[keyValue] != "") and (group[key] != ""):
+            arrs[group[key]] = group[keyValue]
     temp_list = {}
     for k in sorted(arrs, key=len, reverse=True):
         temp_list[k] = arrs[k]
@@ -100,7 +101,7 @@ def translate_patch(myjson, key, keyList, keyValueList, isRunLeven = False):
                 translate_patch(item, key, keyList, keyValueList, isRunLeven)
 
 def uma_name_patching(myjson, key, keyValue, isRunLeven = False):
-    if (key == keyValue):
+    if (key == keyValue) or (keyValue == ""):
         return
     if type(myjson) is dict:
         for jsonkey in myjson.copy():
@@ -166,7 +167,7 @@ with open("UmaMusume_SkillNameTranslation.json", "r", encoding="utf-8-sig") as f
     load_library(f, skillName , 'skill_list', 'text', 'translation')
 
 with open("UmaMusume_SkillDescriptionTranslation.json", "r", encoding="utf-8-sig") as f:
-    load_library(f, skillDescription, 'skill-desc', 'skill_description', 'skill_translated')
+    load_library(f, skillDescription, 'skill-desc', 'text', 'translation')
 
 with open("UmaMusume_UmaNameTranslation.json", "r", encoding="utf-8-sig") as f:
     load_library(f, umaName, 'uma-name', 'text', 'translation')
